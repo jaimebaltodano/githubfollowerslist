@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html ng-app="followersApp" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Followers</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="index.css">
+</head>
+<body ng-controller = 'followersCtrl'>
+  <div class="container">
+    <div class="header clearfix">
+      <div class="jumbotron">
+        <h2><img src="img/baseline_supervised_user.png">Followers</h2>
+        <small>Users from github's public api</small>
+      </div>
+    </div>
+    <div class="main">
+  		<div class="row">
+        <ul class="list-group" >
+          <li id = "{{'user-' + user.login}}" class="list-group-item text-primary" ng-repeat="user in users" ng-click="followers(user.login)" data-toggle="modal" data-target="#myModal">
+            <img src="{{user.avatar_url}}" class="img-rounded userIcon">@{{user.login}}<img src="img/baseline_expand_more.png" class="right" ng-show="active!=user.login"><img src="img/baseline_expand_less.png" class="right" ng-show="active==user.login">
+            <div id="{{'followers-' + user.login}}" class="followerslist" ng-show="active==user.login">
+            </div>
+          </li>		  		
+        </ul>
+	    </div>	
+    </div>
+  </div>
+  <script src="https://code.angularjs.org/1.5.3/angular.js"></script>
+  <script src="index.js"></script>
+</body>
+</html>
